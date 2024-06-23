@@ -48,6 +48,7 @@ class _ContactState extends State<Contact> {
             color: Colors.black,
             fontSize: 35,
           ),
+          textAlign: TextAlign.center,
         ),
       ),
 // Contenu de la page
@@ -101,17 +102,12 @@ class _ContactState extends State<Contact> {
         },
       ),
 // Champ 'Message'
-      HtmlEditor(
-        controller: _htmlController,
-        htmlEditorOptions: const HtmlEditorOptions(
-          hint: "Votre message ici...",
-            initialText: "<p></p>",
-          ),
-          otherOptions: const OtherOptions(
-            height: 150,
-          ),
-        ),
-        const SizedBox(height: 15),
+              TextFormField(
+                decoration: const InputDecoration(
+                  labelText: 'Votre message :',
+                  hintText: 'Ecrivez votre message...',
+                ),
+              ),
 // Bouton 'Envoyer'
       ElevatedButton(
                 onPressed: _submitForm,
@@ -119,7 +115,7 @@ class _ContactState extends State<Contact> {
               ),
             ],
           ),
-    ),
+        ),
     ));
   }
 }
