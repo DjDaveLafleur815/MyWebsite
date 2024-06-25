@@ -15,12 +15,13 @@ class _AboutMeState extends State<AboutMe> {
     return Scaffold(
       // En-tête de la page
       appBar: AppBar(
-        title: const Text(
-          'À Propos',
+        title: const Text('À Propos',
           style: TextStyle(
             color: Colors.black,
-            fontSize: 35,
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
           ),
+          textAlign: TextAlign.center,
         ),
       ),
       // Contenu de la page
@@ -31,7 +32,7 @@ class _AboutMeState extends State<AboutMe> {
             child: Column(
               children: [
                 const Text(
-                  'Passionné par l\'informatique le numérique et la programmation en général, j\'ai commencé par étudier les bases de HTML et CSS en 1ère STI2D option S.I.N.(Systèmes Informatiques et Numériques) puis me suis orienté vers une formation Développeur Web et Web Mobile (à temps partiel avec Web Force 3), ayant obtenu avec succès mon titre professionnel de niveau 5 (BAC+2) pour enchaîner sur une Formation Concepteur Développeur d\'Applications, puis finir sur une Formation Développeur en Intelligences Artificielles. Je suis également depuis 8 ans musicien en fanfare, batterie-fanfare, harmonie et dans plusieurs projets musicaux en tout genre (rock, metal, etc...)',
+                  'Passionné par l\'informatique le numérique et la programmation en général, j\'ai commencé par étudier les bases de HTML et CSS en 1ère STI2D option S.I.N.(Systèmes Informatiques et Numériques) puis me suis orienté vers une formation Développeur Web et Web Mobile (à temps partiel avec Web Force 3), ayant obtenu avec succès mon titre professionnel de niveau 5 (BAC+2) pour enchaîner sur une Formation Concepteur Développeur d\'Applications, puis finir sur une Formation Développeur en Intelligences Artificielles. Je suis également depuis 8 ans musicien en fanfare, batterie-fanfare, harmonie et dans plusieurs projets musicaux en tout genre (rock, métal, etc...)',
                   style: TextStyle(fontSize: 15),
                   textAlign: TextAlign.center,
                 ),

@@ -1,7 +1,5 @@
 // importations des Widgets de base de l'application
-// ignore_for_file: use_build_context_synchronously
 import 'package:flutter/material.dart';
-import 'package:html_editor_enhanced/html_editor.dart';
 
 class Contact extends StatefulWidget {
   const Contact({super.key});
@@ -14,7 +12,6 @@ class Contact extends StatefulWidget {
 class _ContactState extends State<Contact> {
   int currentIndex = 3;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final HtmlEditorController _htmlController = HtmlEditorController();
   final nameController = TextEditingController();
   final firstNameController = TextEditingController();
   final emailController = TextEditingController();
@@ -28,11 +25,21 @@ class _ContactState extends State<Contact> {
     super.dispose();
   }
 
+// Fonction de soumission du formulaire
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
-      // Envoyer le formulaire
-      print('Message envoyé avec succès !');
-      
+      // Afficher un SnackBar avec un message de succès
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Message envoyé avec succès !')),
+      );
+
+      // Naviguer vers la page d'accueil après un délai pour permettre la visualisation du SnackBar
+      Future.delayed(const Duration(seconds: 0), () {
+        Navigator.of(context).pushNamed('/home',
+            arguments: 'Message envoyé avec succès !',
+        );
+      });
+
       // Réinitialiser les contrôleurs pour effacer le formulaire
       nameController.clear();
       emailController.clear();
@@ -46,8 +53,10 @@ class _ContactState extends State<Contact> {
         title: const Text('Contactez-moi',
           style: TextStyle(
             color: Colors.black,
-            fontSize: 35,
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
           ),
+          textAlign: TextAlign.center,
         ),
       ),
 // Contenu de la page
@@ -101,25 +110,30 @@ class _ContactState extends State<Contact> {
         },
       ),
 // Champ 'Message'
-      HtmlEditor(
-        controller: _htmlController,
-        htmlEditorOptions: const HtmlEditorOptions(
-          hint: "Votre message ici...",
-            initialText: "<p></p>",
-          ),
-          otherOptions: const OtherOptions(
-            height: 150,
-          ),
+      SingleChildScrollView(
+        child: Column(
+          children: [
+            TextFormField(
+              controller: messageController,
+              decoration: const InputDecoration(
+                labelText: 'Message',
+                hintText: 'Écrivez votre message...',
+                border: OutlineInputBorder(),
+              ),
+              maxLines: 5,
+            ),
+          ],
         ),
-        const SizedBox(height: 15),
+      ),
+      const SizedBox(height: 20),
 // Bouton 'Envoyer'
       ElevatedButton(
-                onPressed: _submitForm,
-                child: const Text('Envoyer'),
-              ),
-            ],
-          ),
+        onPressed: _submitForm,
+        child: const Text('Envoyer'),
+        ),
+      ],
     ),
-    ));
-  }
+  ),
+));
+}
 }

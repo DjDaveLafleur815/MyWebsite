@@ -14,12 +14,13 @@ class _PortfolioState extends State<Portfolio> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Portfolio',
+        title: const Text('Portfolio',
           style: TextStyle(
             color: Colors.black,
-            fontSize: 35,
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
           ),
+          textAlign: TextAlign.center,
         ),
       ),
       // Contenu de la page

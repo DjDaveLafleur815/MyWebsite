@@ -1,6 +1,7 @@
 // importations des Widgets de base de l'application
 import 'package:flutter/material.dart';
 import 'screen/HomeView.dart';
+import 'screen/tabs/ContactView.dart';
 
 // Fonction de lancement de l'application
 void main() {
@@ -13,9 +14,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeView(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const HomeView(),
+        '/contact': (context) => const Contact(),
+        '/home': (context) => const HomeView(), // Définit la route vers la page d'accueil
+      },
     );
   }
 }
