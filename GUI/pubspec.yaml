@@ -1,0 +1,37 @@
+name: my_website
+description: "A new Flutter project."
+
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.3 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.6
+  html_editor_enhanced: ^2.5.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+  flutter_lints: ^4.0.0
+
+flutter:
+  assets:
+    - assets/images/pic_of_me.jpg
+    - assets/images/angularlogo.jpg
+    - assets/images/bootstrap5logo.jpg
+    - assets/images/htmlcssjslogos.jpg
+    - assets/images/phpmysqllogos.jpg
+    - assets/images/symfonylogos.jpg
+    - assets/portfolio/ANTOINE_David_CV2024.jpg
+    - assets/portfolio/ima_air_crash_disaster.jpg
+    - assets/portfolio/img_le_blog_de_batman.jpg
+    - assets/portfolio/img_nina_city.jpg
+
+  uses-material-design: true
