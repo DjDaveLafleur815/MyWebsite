@@ -17,7 +17,7 @@ class _HomeViewState extends State<HomeView> {
   int currentIndex = 0;
 
   // Liste des vues
-  List<Widget> views = [
+  List<Widget> views = const [
     Home(),
     AboutMe(),
     Portfolio(),
