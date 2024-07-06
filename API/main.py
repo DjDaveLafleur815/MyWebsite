@@ -1,33 +1,30 @@
-from flask import Flask, request, jsonify
-from flask_mysqldb import MySQL
-from flask_cors import CORS
+from fastapi import FastAPI, HTTPException, Depends
+from sqlalchemy.orm import Session
+from . import models, schemas  # Assurez-vous d'importer les schémas et modèles corrects
+from .database import SessionLocal, engine
 
-app = Flask(__name__)
-CORS(app)
+app = FastAPI()
 
-# Configuration de la base de données MySQL
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''  
-app.config['MYSQL_DB'] = 'contact_db'
+# Dépendance pour obtenir la session de la base de données
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 
-mysql = MySQL(app)
+@app.post("/contacts/", response_model=schemas.ContactResponse)
+def create_contact(contact: schemas.ContactCreate, db: Session = Depends(get_db)):
+    db_contact = models.Contact(
+        name=contact.name,
+        firstname=contact.firstname,  # Assurez-vous de définir ce champ
+        email=contact.email,
+        message=contact.message
+    )
+    db.add(db_contact)
+    db.commit()
+    db.refresh(db_contact)
+    return db_contact
 
-@app.route('/submit_contact', methods=['POST'])
-def submit_contact():
-    data = request.get_json()
-    first_name = data['first_name']
-    last_name = data['last_name']
-    email = data['email']
-    message = data['message']
 
-    cursor = mysql.connection.cursor()
-    cursor.execute('''INSERT INTO contacts (first_name, last_name, email, message) VALUES (%s, %s, %s, %s)''', 
-                   (first_name, last_name, email, message))
-    mysql.connection.commit()
-    cursor.close()
-
-    return jsonify({'message': 'Contact information saved successfully!'})
-
-if __name__ == '__main__':
-    app.run(debug=True)
+# uvicorn API.main:app --reload

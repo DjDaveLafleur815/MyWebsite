@@ -16,10 +16,10 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   int currentIndex = 0;
 
-  List<Widget> views = const [
-    Home(),
-    AboutMe(),
-    Portfolio(),
+  List<Widget> views = [
+    const Home(),
+    const AboutMe(),
+    const Portfolio(),
     Contact(),
   ];
 
