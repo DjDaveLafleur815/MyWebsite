@@ -1,4 +1,4 @@
-// Importation des packages
+// ignore_for_file: file_names
 import 'package:flutter/material.dart';
 class AboutMe extends StatefulWidget {
   const AboutMe({super.key});

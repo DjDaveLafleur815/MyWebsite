@@ -1,14 +1,11 @@
-// importations des Widgets de base de l'application
 import 'package:flutter/material.dart';
 import 'screen/HomeView.dart';
 import 'screen/tabs/ContactView.dart';
 
-// Fonction de lancement de l'application
 void main() {
   runApp(const MyApp());
 }
 
-// Classe principale
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -20,7 +17,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const HomeView(),
         '/contact': (context) => const Contact(),
-        '/home': (context) => const HomeView(), // Définit la route vers la page d'accueil
+        '/home': (context) => const HomeView(),
       },
     );
   }

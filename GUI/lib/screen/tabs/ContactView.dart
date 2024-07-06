@@ -1,5 +1,4 @@
-// importations des Widgets de base de l'application
-// ignore_for_file: use_build_context_synchronously
+// ignore_for_file: file_names
 import 'package:flutter/material.dart';
 import 'package:html_editor_enhanced/html_editor.dart';
 
@@ -22,7 +21,7 @@ class _ContactState extends State<Contact> {
 
 @override
   void dispose() {
-    // Libérer les contrôleurs lorsqu'ils ne sont plus nécessaires
+    // Libère les contrôleurs lorsqu'ils ne sont plus nécessaires
     nameController.dispose();
     emailController.dispose();
     super.dispose();
@@ -31,9 +30,10 @@ class _ContactState extends State<Contact> {
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
       // Envoyer le formulaire
+      // ignore: avoid_print
       print('Message envoyé avec succès !');
       
-      // Réinitialiser les contrôleurs pour effacer le formulaire
+      // Réinitialise les contrôleurs pour effacer le formulaire
       nameController.clear();
       emailController.clear();
     }

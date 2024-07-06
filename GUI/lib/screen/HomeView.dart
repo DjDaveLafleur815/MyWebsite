@@ -1,4 +1,4 @@
-// Importation des packages
+// ignore_for_file: file_names
 import 'package:flutter/material.dart';
 import 'package:my_website/globals/mysiteList.dart';
 import 'tabs/AboutView.dart';
@@ -16,7 +16,6 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   int currentIndex = 0;
 
-  // Liste des vues
   List<Widget> views = const [
     Home(),
     AboutMe(),
@@ -27,9 +26,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // Contenu de la page
       body: views[currentIndex],
-      // Widget de navigation
       bottomNavigationBar: NavigationBar(
         selectedIndex: currentIndex,
         onDestinationSelected: (index) {

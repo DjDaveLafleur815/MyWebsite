@@ -1,3 +1,4 @@
+// ignore_for_file: file_names
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -26,7 +27,7 @@ class _HomeState extends State<Home> {
         child: Column(
           children: [
             Container(
-              margin: const EdgeInsets.only(top: 20), // Espace de 20 pixels en haut
+              margin: const EdgeInsets.only(top: 20),
               child: const Text(
             'Développeur Web et Web Mobile, Bloggeur, Programmeur et Futur Concepteur Développeur d\'Applications...',
             style: TextStyle(fontSize: 25),
